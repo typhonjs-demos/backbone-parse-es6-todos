@@ -53,6 +53,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseSync">parseSync</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parseCollection">parseCollection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parseModel">parseModel</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">typhonjs-core-backbone-common/src</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/TyphonEvents.js~TyphonEvents.html">TyphonEvents</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-typhonExtend">typhonExtend</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">typhonjs-core-backbone-query/src</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/BackboneQuery.js~BackboneQuery.html">BackboneQuery</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">site/js</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/site/js/App.js~App.html">App</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">site/js/collections</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/site/js/collections/todoList.js~TodoList.html">TodoList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-todoList">todoList</a></span></span></li>
@@ -69,9 +72,9 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">(backbone-parse-es6):<br>backbone/src/GlobalInclusiveRuntime.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
- * GlobalInclusiveRuntime.js (Parse) -- Initializes $ and _ setting them to &quot;root.$&quot; and &quot;root._&quot; before
- * delegating to GlobalRuntime.js to initialize Backbone &amp; Parse. &quot;root&quot; is defined as self in the browser or global if
- * on the server.
+ * GlobalInclusiveRuntime.js (Backbone) -- Initializes jQuery and Underscore setting them to &quot;root.$&quot;, &quot;root.jQuery&quot;
+ * and &quot;root._&quot; respectively before delegating to GlobalRuntime.js to initialize Backbone and Parse. &quot;root&quot; is defined
+ * as self in the browser or global if on the server.
  *
  * Note: We use CJS here as ES6 imports are hoisted. We must set root.$ before initializing Backbone.
  */
@@ -87,7 +90,7 @@ var root = (typeof self === &apos;object&apos; &amp;&amp; self.self === self &am
 
 if (typeof root !== &apos;undefined&apos; &amp;&amp; root !== null)
 {
-   root.$ = require(&apos;jquery&apos;);
+   root.$ = root.jQuery = require(&apos;jquery&apos;);
    root._ = require(&apos;underscore&apos;);
 }
 else

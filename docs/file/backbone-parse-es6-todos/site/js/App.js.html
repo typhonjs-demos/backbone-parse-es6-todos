@@ -53,6 +53,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseSync">parseSync</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parseCollection">parseCollection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parseModel">parseModel</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">typhonjs-core-backbone-common/src</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/TyphonEvents.js~TyphonEvents.html">TyphonEvents</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-typhonExtend">typhonExtend</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">typhonjs-core-backbone-query/src</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/BackboneQuery.js~BackboneQuery.html">BackboneQuery</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">site/js</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/site/js/App.js~App.html">App</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">site/js/collections</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/site/js/collections/todoList.js~TodoList.html">TodoList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-todoList">todoList</a></span></span></li>
@@ -267,16 +270,27 @@ const s_INITIALIZE_ROUTE = () =&gt;
    });
 
    // This regex matches the root path, so that it can be set in `Backbone.history.start`
-   let urlMatch;
+   let root, urlMatch;
 
+   // Construct the root path to the web app which is the path above the domain that may include `index.html` or
+   // `indexSrc.html` depending on the runtime. For instance in WebStorm when creating a local server `index.html` is
+   // included in the URL. Running on an actual web server often `index.html` is not put into the URL. When running the
+   // app from source code transpiled in the browser `indexSrc.html` is always in the URL.
    if (typeof window.location !== &apos;undefined&apos;)
    {
-      urlMatch = window.location.toString().match(/\/\/[\s\S]*\/([\s\S]*\/)([\s\S]*\.html)/i);
-   }
+      const windowLocation = window.location.toString();
 
-   // Construct the root path to the web app which is the path above the domain including `index.html` for the bundle
-   // or `indexSrc.html` when running the app from source code transpiled in the browser.
-   const root = urlMatch &amp;&amp; urlMatch.length &gt;= 3 ? `${urlMatch[1]}${urlMatch[2]}` : undefined;
+      if (windowLocation.includes(&apos;.html&apos;))
+      {
+         urlMatch = windowLocation.match(/\/\/[\s\S]*\/([\s\S]*\/)([\s\S]*\.html)/i);
+         root = urlMatch &amp;&amp; urlMatch.length &gt;= 3 ? `${urlMatch[1]}${urlMatch[2]}` : undefined;
+      }
+      else
+      {
+         urlMatch = windowLocation.match(/\/\/[\s\S]*\/([\s\S]*\/)/i);
+         root = urlMatch &amp;&amp; urlMatch.length &gt;= 2 ? urlMatch[1] : undefined;
+      }
+   }
 
    Backbone.history.start({ root });
 };</code></pre>

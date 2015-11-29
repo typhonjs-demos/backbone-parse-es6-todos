@@ -53,6 +53,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseSync">parseSync</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parseCollection">parseCollection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parseModel">parseModel</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">typhonjs-core-backbone-common/src</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/TyphonEvents.js~TyphonEvents.html">TyphonEvents</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-typhonExtend">typhonExtend</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">typhonjs-core-backbone-query/src</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/BackboneQuery.js~BackboneQuery.html">BackboneQuery</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">site/js</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/site/js/App.js~App.html">App</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">site/js/collections</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/site/js/collections/todoList.js~TodoList.html">TodoList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-todoList">todoList</a></span></span></li>
@@ -74,6 +77,8 @@ import _                from &apos;underscore&apos;;
 import Model            from &apos;./ParseModel.js&apos;;
 import Collection       from &apos;backbone-es6/src/Collection.js&apos;;
 
+import BackboneQuery    from &apos;backbone-query&apos;;
+
 import Debug            from &apos;backbone-es6/src/Debug.js&apos;;
 
 /**
@@ -84,6 +89,9 @@ import Debug            from &apos;backbone-es6/src/Debug.js&apos;;
  * to ParseModels. One must set a Parse.Query instance as options.query or use a getter method such as &quot;get query()&quot;.
  *
  * Please see the `Collection` documentation for relevant information about the parent class / implementation.
+ *
+ * In addition ParseCollection includes BackboneQuery support which supports local query / sorting of collections.
+ * Additional methods: `find, findOne, resetQueryCache, sortAll, whereBy`.
  *
  * @example
  *
@@ -148,9 +156,18 @@ class ParseCollection extends Collection
       if (_.isBoolean(options.abortCtor) &amp;&amp; options.abortCtor) { return; }
 
       // Must detect if there are any getters defined in order to skip setting these values directly.
+      const hasComparatorGetter = !_.isUndefined(this.comparator);
       const hasModelGetter = !_.isUndefined(this.model);
       const hasQueryGetter = !_.isUndefined(this.query);
-      const hasComparatorGetter = !_.isUndefined(this.comparator);
+
+      if (options.comparator !== void 0 &amp;&amp; !hasComparatorGetter)
+      {
+         /**
+          * A comparator string indicating the attribute to sort.
+          * @type {string}
+          */
+         this.comparator = options.comparator;
+      }
 
       // The default model for a collection is just a **Backbone.Model**. This should be overridden in most cases.
       if (!hasModelGetter)
@@ -166,7 +183,7 @@ class ParseCollection extends Collection
       {
          if (!(options.model instanceof Model))
          {
-            throw TypeError(&apos;options.model is not an instance of ParseModel.&apos;);
+            throw new TypeError(&apos;options.model is not an instance of ParseModel.&apos;);
          }
 
          this.model = options.model;
@@ -179,15 +196,6 @@ class ParseCollection extends Collection
           * @type {Parse.Query}
           */
          this.query = options.query;
-      }
-
-      if (options.comparator !== void 0 &amp;&amp; !hasComparatorGetter)
-      {
-         /**
-          * A comparator string indicating the attribute to sort.
-          * @type {string}
-          */
-         this.comparator = options.comparator;
       }
 
       // Allows child classes to postpone initialization.
@@ -210,10 +218,33 @@ class ParseCollection extends Collection
    clone()
    {
       return new this.constructor(this.models, {
+         comparator: this.comparator,
          model: this.model,
-         query: this.query,
-         comparator: this.comparator
+         query: this.query
       });
+   }
+
+   /**
+    * Delegates to `BackboneQuery.find` to return an array of models that match the sort query.
+    *
+    * @param {string}   query    - A query string.
+    * @param {Object}   options  - Optional parameters
+    * @returns {Array&lt;Model&gt;}
+    */
+   find(query, options)
+   {
+      return BackboneQuery.find(this, query, options);
+   }
+
+   /**
+    * Delegates to `BackboneQuery.findOne` to return the first model that matches the sort query.
+    *
+    * @param {string}   query    - A query string.
+    * @returns {Model}
+    */
+   findOne(query)
+   {
+      return BackboneQuery.findOne(this, query);
    }
 
    /* eslint-disable no-unused-vars */
@@ -258,6 +289,42 @@ Debug.log(`ParseCollection - parse - 3 - parseObject: ${JSON.stringify(model.toJ
       }
 
       return output;
+   }
+
+   /**
+    * Delegates to `BackboneQuery.resetQueryCache` to reset this collections query cache.
+    */
+   resetQueryCache()
+   {
+      BackboneQuery.resetQueryCache(this);
+   }
+
+   /**
+    * Delegates to `BackboneQuery.sortAll` to return all models that match the sort query.
+    *
+    * @param {string}   query    - A query string.
+    * @returns {Array&lt;Model&gt;}
+    */
+   sortAll(query)
+   {
+      return BackboneQuery.sortAll(this, query);
+   }
+
+   /**
+    * Delegates to `BackboneQuery.whereBy` to return a new collection with the models that match the sort query.
+    *
+    * @param {string}   query    - A query string.
+    * @param {Object}   options  - Optional parameters
+    * @returns {Collection}
+    */
+   whereBy(query, options)
+   {
+      return BackboneQuery.whereBy(this, query, options,
+      {
+         model: this.model,
+         query: this.query,
+         comparator: this.comparator
+      });
    }
 }
 

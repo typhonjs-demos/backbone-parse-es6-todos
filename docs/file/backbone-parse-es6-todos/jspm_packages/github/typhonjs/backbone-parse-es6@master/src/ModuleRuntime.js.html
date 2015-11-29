@@ -53,6 +53,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-parseSync">parseSync</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parseCollection">parseCollection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parseModel">parseModel</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">typhonjs-core-backbone-common/src</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/TyphonEvents.js~TyphonEvents.html">TyphonEvents</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-typhonExtend">typhonExtend</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">typhonjs-core-backbone-query/src</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/BackboneQuery.js~BackboneQuery.html">BackboneQuery</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">site/js</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/site/js/App.js~App.html">App</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">site/js/collections</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/backbone-parse-es6-todos/site/js/collections/todoList.js~TodoList.html">TodoList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-todoList">todoList</a></span></span></li>
@@ -74,17 +77,18 @@
 
 &apos;use strict&apos;;
 
-import Backbone      from &apos;backbone-es6/src/Backbone.js&apos;;
-import Collection    from &apos;./ParseCollection.js&apos;;
-import Events        from &apos;backbone-es6/src/Events.js&apos;;
-import History       from &apos;backbone-es6/src/History.js&apos;;
-import Model         from &apos;./ParseModel.js&apos;;
-import Router        from &apos;backbone-es6/src/Router.js&apos;;
-import View          from &apos;backbone-es6/src/View.js&apos;;
+import Backbone         from &apos;backbone-es6/src/Backbone.js&apos;;
+import ParseCollection  from &apos;./ParseCollection.js&apos;;
+import TyphonEvents     from &apos;typhonjs-backbone-common/src/TyphonEvents.js&apos;;
+import History          from &apos;backbone-es6/src/History.js&apos;;
+import Model            from &apos;./ParseModel.js&apos;;
+import Router           from &apos;backbone-es6/src/Router.js&apos;;
+import View             from &apos;backbone-es6/src/View.js&apos;;
 
-import parseSync     from &apos;./parseSync.js&apos;;
+import parseSync        from &apos;./parseSync.js&apos;;
 
-import parseExtend   from &apos;./parseExtend.js&apos;;
+import parseExtend      from &apos;./parseExtend.js&apos;;
+import typhonExtend     from &apos;typhonjs-backbone-common/src/typhonExtend.js&apos;;
 
 const options =
 {
@@ -92,9 +96,10 @@ const options =
    VERSION: &apos;1.2.3&apos;
 };
 
-const backbone = new Backbone(Collection, Events, History, Model, Router, View, parseSync, options);
+const backbone = new Backbone(ParseCollection, TyphonEvents, History, Model, Router, View, parseSync, options);
 
 parseExtend(backbone);
+typhonExtend(backbone);
 
 export default backbone;</code></pre>
 

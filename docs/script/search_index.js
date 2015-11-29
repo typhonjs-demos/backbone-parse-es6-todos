@@ -30,6 +30,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "typhonjs-core-backbone-query/src/backbonequery.js~backbonequery",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/BackboneQuery.js~BackboneQuery.html",
+    "<span>BackboneQuery</span> <span class=\"search-result-import-path\">typhonjs-core-backbone-query/src/BackboneQuery.js</span>",
+    "class"
+  ],
+  [
     "backbone-es6/src/collection.js~collection",
     "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-es6@master/src/Collection.js~Collection.html",
     "<span>Collection</span> <span class=\"search-result-import-path\">backbone-es6/src/Collection.js</span>",
@@ -105,6 +111,12 @@ window.esdocSearchIndex = [
     "backbone-parse-es6-todos/site/js/collections/todolist.js~todolist",
     "class/backbone-parse-es6-todos/site/js/collections/todoList.js~TodoList.html",
     "<span>TodoList</span> <span class=\"search-result-import-path\">backbone-parse-es6-todos/site/js/collections/todoList.js</span>",
+    "class"
+  ],
+  [
+    "typhonjs-core-backbone-common/src/typhonevents.js~typhonevents",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/TyphonEvents.js~TyphonEvents.html",
+    "<span>TyphonEvents</span> <span class=\"search-result-import-path\">typhonjs-core-backbone-common/src/TyphonEvents.js</span>",
     "class"
   ],
   [
@@ -184,6 +196,12 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-todoList",
     "<span>todoList</span> <span class=\"search-result-import-path\">backbone-parse-es6-todos/site/js/collections/todoList.js</span>",
     "variable"
+  ],
+  [
+    "typhonjs-core-backbone-common/src/typhonextend.js~typhonextend",
+    "function/index.html#static-function-typhonExtend",
+    "<span>typhonExtend</span> <span class=\"search-result-import-path\">typhonjs-core-backbone-common/src/typhonExtend.js</span>",
+    "function"
   ],
   [
     "builtinexternal/ecmascriptexternal.js~array",
@@ -1476,6 +1494,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/parsecollection.js~parsecollection#find",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/ParseCollection.js~ParseCollection.html#instance-method-find",
+    "backbone/src/ParseCollection.js~ParseCollection#find",
+    "method"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/parsecollection.js~parsecollection#findone",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/ParseCollection.js~ParseCollection.html#instance-method-findOne",
+    "backbone/src/ParseCollection.js~ParseCollection#findOne",
+    "method"
+  ],
+  [
     "backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/parsecollection.js~parsecollection#model",
     "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/ParseCollection.js~ParseCollection.html#instance-member-model",
     "backbone/src/ParseCollection.js~ParseCollection#model",
@@ -1492,6 +1522,24 @@ window.esdocSearchIndex = [
     "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/ParseCollection.js~ParseCollection.html#instance-member-query",
     "backbone/src/ParseCollection.js~ParseCollection#query",
     "member"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/parsecollection.js~parsecollection#resetquerycache",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/ParseCollection.js~ParseCollection.html#instance-method-resetQueryCache",
+    "backbone/src/ParseCollection.js~ParseCollection#resetQueryCache",
+    "method"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/parsecollection.js~parsecollection#sortall",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/ParseCollection.js~ParseCollection.html#instance-method-sortAll",
+    "backbone/src/ParseCollection.js~ParseCollection#sortAll",
+    "method"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/parsecollection.js~parsecollection#whereby",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/ParseCollection.js~ParseCollection.html#instance-method-whereBy",
+    "backbone/src/ParseCollection.js~ParseCollection#whereBy",
+    "method"
   ],
   [
     "backbone-parse-es6-todos/jspm_packages/github/typhonjs/backbone-parse-es6@master/src/parsemodel.js",
@@ -1620,6 +1668,84 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/typhonevents.js",
+    "file/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/TyphonEvents.js.html",
+    "typhonjs-core-backbone-common/src/TyphonEvents.js",
+    "file"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/typhonevents.js~typhonevents#triggerdefer",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/TyphonEvents.js~TyphonEvents.html#instance-method-triggerDefer",
+    "typhonjs-core-backbone-common/src/TyphonEvents.js~TyphonEvents#triggerDefer",
+    "method"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/typhonevents.js~typhonevents#triggerfirst",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/TyphonEvents.js~TyphonEvents.html#instance-method-triggerFirst",
+    "typhonjs-core-backbone-common/src/TyphonEvents.js~TyphonEvents#triggerFirst",
+    "method"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/typhonevents.js~typhonevents#triggerresults",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/TyphonEvents.js~TyphonEvents.html#instance-method-triggerResults",
+    "typhonjs-core-backbone-common/src/TyphonEvents.js~TyphonEvents#triggerResults",
+    "method"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/typhonevents.js~typhonevents#triggerthen",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/TyphonEvents.js~TyphonEvents.html#instance-method-triggerThen",
+    "typhonjs-core-backbone-common/src/TyphonEvents.js~TyphonEvents#triggerThen",
+    "method"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/maineventbus.js",
+    "file/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/mainEventbus.js.html",
+    "typhonjs-core-backbone-common/src/mainEventbus.js",
+    "file"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/typhonextend.js",
+    "file/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-common@master/src/typhonExtend.js.html",
+    "typhonjs-core-backbone-common/src/typhonExtend.js",
+    "file"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/backbonequery.js",
+    "file/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/BackboneQuery.js.html",
+    "typhonjs-core-backbone-query/src/BackboneQuery.js",
+    "file"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/backbonequery.js~backbonequery.find",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/BackboneQuery.js~BackboneQuery.html#static-method-find",
+    "typhonjs-core-backbone-query/src/BackboneQuery.js~BackboneQuery.find",
+    "method"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/backbonequery.js~backbonequery.findone",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/BackboneQuery.js~BackboneQuery.html#static-method-findOne",
+    "typhonjs-core-backbone-query/src/BackboneQuery.js~BackboneQuery.findOne",
+    "method"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/backbonequery.js~backbonequery.resetquerycache",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/BackboneQuery.js~BackboneQuery.html#static-method-resetQueryCache",
+    "typhonjs-core-backbone-query/src/BackboneQuery.js~BackboneQuery.resetQueryCache",
+    "method"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/backbonequery.js~backbonequery.sortall",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/BackboneQuery.js~BackboneQuery.html#static-method-sortAll",
+    "typhonjs-core-backbone-query/src/BackboneQuery.js~BackboneQuery.sortAll",
+    "method"
+  ],
+  [
+    "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/backbonequery.js~backbonequery.whereby",
+    "class/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-backbone-query@master/src/BackboneQuery.js~BackboneQuery.html#static-method-whereBy",
+    "typhonjs-core-backbone-query/src/BackboneQuery.js~BackboneQuery.whereBy",
+    "method"
+  ],
+  [
     "backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-parse-init@master/src/lifecycle/parseinitialize.js",
     "file/backbone-parse-es6-todos/jspm_packages/github/typhonjs/typhonjs-core-parse-init@master/src/lifecycle/ParseInitialize.js.html",
     "parseinit/src/lifecycle/ParseInitialize.js",
@@ -1708,12 +1834,6 @@ window.esdocSearchIndex = [
     "class/backbone-parse-es6-todos/site/js/collections/todoList.js~TodoList.html#instance-method-remaining",
     "backbone-parse-es6-todos/site/js/collections/todoList.js~TodoList#remaining",
     "method"
-  ],
-  [
-    "backbone-parse-es6-todos/site/js/events/maineventbus.js",
-    "file/backbone-parse-es6-todos/site/js/events/mainEventbus.js.html",
-    "backbone-parse-es6-todos/site/js/events/mainEventbus.js",
-    "file"
   ],
   [
     "backbone-parse-es6-todos/site/js/models/item.js",
