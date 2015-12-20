@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../../../../">
-  <title data-ice="title">typhonjs-core-backbone-common/src/mainLoggedEventbus.js | backbone-parse-es6-todos API Document</title>
+  <title data-ice="title">typhonjs-core-utils/src/btoa.js | backbone-parse-es6-todos API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -76,28 +76,119 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">typhonjs-core-backbone-common/src/mainLoggedEventbus.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">typhonjs-core-utils/src/btoa.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Aftermarket implementation of the btoa function, since IE9 does not support it.
+ *
+ * Code partly taken from:
+ * https://github.com/meteor/meteor/blob/devel/packages/base64/base64.js
+ * Copyright (C) 2011--2014 Meteor Development Group
+ *
+ * @param {Array|string}   array -
+ * @returns {string}
+ */
+const polyBtoa = (array) =&gt;
+{
+   if (typeof array === &apos;string&apos;)
+   {
+      const str = array;
+      array = s_BTOA_NEW_BINARY(str.length);
+      for (let j = 0; j &lt; str.length; j++)
+      {
+         const ch = str.charCodeAt(j);
+         if (ch &gt; 0xFF)
+         {
+            throw new Error(&apos;Not ascii. Base64.encode can only take ascii strings&apos;);
+         }
+         array[j] = ch;
+      }
+   }
 
-import TyphonLoggedEvents  from &apos;./TyphonLoggedEvents.js&apos;;
+   const answer = [];
+   let a = null;
+   let b = null;
+   let c = null;
+   let d = null;
 
-const eventbus = new TyphonLoggedEvents();
+   for (let i = 0; i &lt; array.length; i++)
+   {
+      switch (i % 3)
+      {
+         case 0:
+            a = (array[i] &gt;&gt; 2) &amp; 0x3F;
+            b = (array[i] &amp; 0x03) &lt;&lt; 4;
+            break;
 
-eventbus.setEventbusName(&apos;mainEventbus&apos;);
+         case 1:
+            b |= (array[i] &gt;&gt; 4) &amp; 0xF;
+            c = (array[i] &amp; 0xF) &lt;&lt; 2;
+            break;
+
+         case 2:
+            c |= (array[i] &gt;&gt; 6) &amp; 0x03;
+            d = array[i] &amp; 0x3F;
+            answer.push(s_BTOA_GET_CHAR(a));
+            answer.push(s_BTOA_GET_CHAR(b));
+            answer.push(s_BTOA_GET_CHAR(c));
+            answer.push(s_BTOA_GET_CHAR(d));
+            a = null;
+            b = null;
+            c = null;
+            d = null;
+            break;
+      }
+   }
+
+   if (a !== null)
+   {
+      answer.push(s_BTOA_GET_CHAR(a));
+      answer.push(s_BTOA_GET_CHAR(b));
+
+      if (c === null)
+      {
+         answer.push(&apos;=&apos;);
+      }
+      else
+      {
+         answer.push(s_BTOA_GET_CHAR(c));
+      }
+
+      if (d === null)
+      {
+         answer.push(&apos;=&apos;);
+      }
+   }
+
+   return answer.join(&apos;&apos;);
+};
 
 /**
- * Exports an instance of `TyphonLoggedEvents` which adds asynchronous capabilities to `Backbone.Events` which is used
- * as a main eventbus. Note that an instance of `TyphonLoggedEvents` is exported and is also associated to a mapped
- * path, `mainEventbus` in the SystemJS extra configuration data loaded by all TyphonJS repos in
- * `./config/config-app-paths.js`. By using a mapped path any other module may import the main eventbus via:
- * `import eventbus from &apos;mainEventbus&apos;;`
+ * Either loads the Window.btoa function or defaults to the polyfill.
  *
- * Note the above creation of `const eventbus` is a workaround for an ESDoc bug:
- * https://github.com/esdoc/esdoc/issues/166
- *
- * Normally we can write `export default new TyphonLoggedEvents();`, but this currently breaks ESDoc.
+ * @type {function}
  */
-export default eventbus;</code></pre>
+const btoa = (typeof self === &apos;object&apos; &amp;&amp; self.self === self &amp;&amp; self.btoa) ? self.btoa : polyBtoa;
+
+export default btoa;
+
+// Private internal methods -----------------------------------------------------------------------------------------
+
+const s_BTOA_BASE_64_CHARS = &apos;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&apos;;
+
+const s_BTOA_GET_CHAR = (val) =&gt;
+{
+   return s_BTOA_BASE_64_CHARS.charAt(val);
+};
+
+const s_BTOA_NEW_BINARY = (len) =&gt;
+{
+   const ret = [];
+   for (let i = 0; i &lt; len; i++)
+   {
+      ret.push(0);
+   }
+   return ret;
+};</code></pre>
 
 </div>
 
