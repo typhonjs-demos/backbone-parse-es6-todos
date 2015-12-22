@@ -59,11 +59,11 @@ export default class LogInView extends Backbone.View
       const password = this.$('#login-password').val();
 
       // Send an event `app:user:login` on successful login.
-      Parse.User.logIn(username, password).then((user) =>
+      Parse.User.logIn(username, password).then(() =>
       {
          eventbus.trigger('app:user:login');
       },
-      (error) =>
+      () =>
       {
          this.$('.login-form .error').html('Invalid username or password. Please try again.').show('fast');
 
@@ -106,7 +106,7 @@ export default class LogInView extends Backbone.View
       const password = this.$('#signup-password').val();
 
       // Dispatch the `app:user:login` on successful signup.
-      Parse.User.signUp(username, password, { ACL: new Parse.ACL() }).then((user) =>
+      Parse.User.signUp(username, password, { ACL: new Parse.ACL() }).then(() =>
       {
          eventbus.trigger('app:user:login');
       },

@@ -3,7 +3,6 @@
 import $                from 'jquery';
 import _                from 'underscore';
 import Backbone         from 'backbone';
-import Parse            from 'parse';
 import eventbus         from 'mainEventbus';
 
 import ItemView         from 'pathSite/js/views/ItemView.js';

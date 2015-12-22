@@ -8,16 +8,16 @@ var System = System || global.System;
 
 var JSPMParser = JSPMParser || (typeof require !== 'undefined' ? require('typhonjs-config-jspm-parse') : undefined);
 
-// Gets the PackageResolver and finds the `typhonjs-backbone-common` child dependency of mapped package `backbone`.
+// Gets the PackageResolver and finds the `typhonjs-core-backbone-event` child dependency of mapped package `backbone`.
 var packageResolver = JSPMParser.getPackageResolver(System);
-var pathBackboneCommon = packageResolver.getDirectDependency('backbone', 'typhonjs-backbone-common');
+var pathBackboneEvents = packageResolver.getDirectDependency('backbone', 'typhonjs-core-backbone-events');
 
 System.config(
 {
    map:
    {
-//      'mainEventbus': pathBackboneCommon + '/src/mainEventbus.js',       // This is the normal eventbus.
-      'mainEventbus': pathBackboneCommon + '/src/mainLoggedEventbus.js',   // This is the logging enabled eventbus.
+//      'mainEventbus': pathBackboneEvents + '/src/mainEventbus.js',       // This is the normal eventbus.
+      'mainEventbus': System.map['typhonjs-core-backbone-events-logged'] + '/src/mainEventbus.js', // This is the logging enabled eventbus.
       'parseconfig': 'config/production-config.js',
       'pathConfig': 'config',
       'pathSite': 'site'
