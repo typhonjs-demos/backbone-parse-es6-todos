@@ -1,10 +1,10 @@
 # backbone-parse-es6-todos
-Provides the canonical TODOs demo for backbone-parse-es6 using JSPM / SystemJS.
+Provides the canonical TODOs demo for [backbone-parse-es6](https://github.com/typhonjs-parse/backbone-parse-es6) using [JSPM](http://jspm.io/) / [SystemJS](https://github.com/systemjs/systemjs).
 
 More documentation and tutorial coming soon. The basic installation steps:
-- Install Node
-- Install Gulp globally "npm install gulp -g"
-- Install JSPM / SystemJS globally "npm install jspm -g"
+- Install Node (only once as necessary)
+- Install Gulp globally "npm install gulp -g" (only once as necessary)
+- Install JSPM / SystemJS globally "npm install jspm -g" (only once as necessary)
 - Check out the source repo.
 - run "npm install" from the local copy directory.
 - run "jspm install" from the local copy directory.
