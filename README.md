@@ -1,5 +1,5 @@
 # backbone-parse-es6-todos
-Provides the canonical TODOs demo for [backbone-parse-es6](https://github.com/typhonjs-parse/backbone-parse-es6) using [JSPM](http://jspm.io/) / [SystemJS](https://github.com/systemjs/systemjs).
+Provides the canonical TODOs demo for [backbone-parse-es6](https://github.com/typhonjs-backbone-parse/backbone-parse-es6) using [JSPM](http://jspm.io/) / [SystemJS](https://github.com/systemjs/systemjs).
 
 More documentation and tutorial coming soon. The basic installation steps:
 - Install Node (only once as necessary)
@@ -12,6 +12,6 @@ More documentation and tutorial coming soon. The basic installation steps:
 
 More info coming soon. 
 
-Live demo here: http://js.demos.typhonrt.org/backbone-parse-es6-todos/
+Live demo here: https://demos.typhonjs.io/typhonjs-demos/backbone-parse-es6-todos
 
-Docs (class overview) here: http://js.demos.typhonrt.org/backbone-parse-es6-todos/docs/
+Docs (class overview) here: https://docs.typhonjs.io/typhonjs-demos/backbone-parse-es6-todos
